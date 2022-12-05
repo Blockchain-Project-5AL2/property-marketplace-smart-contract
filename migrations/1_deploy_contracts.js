@@ -7,4 +7,4 @@ module.exports = function(deployer) {
   deployer.link(PropertyFactory, Helper, Marketplace);
   deployer.deploy(Helper);
   deployer.deploy(Marketplace);
-};
+}; 
