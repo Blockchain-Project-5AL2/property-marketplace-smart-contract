@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.25 <0.9.0;
 
-import "./PropertyFactory.sol";
+// import "./PropertyFactory.sol";
 import "./Helper.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
@@ -81,6 +81,7 @@ contract Marketplace is Helper, ERC721 {
 
 	function buyProperty(uint _propertyId) public payable enoughEtherToBuyProperty(_propertyId) isInSale(_propertyId) {
 		address buyerAddress = msg.sender;
+		_mint(buyerAddress, _propertyId);
 		_transferOwnership(_propertyId, buyerAddress);
 		emit SoldProperty(_propertyId, buyerAddress, properties[_propertyId].price);
 	}
