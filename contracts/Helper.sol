@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.4.25 <0.9.0;
 
 import "./PropertyFactory.sol";
@@ -9,9 +10,6 @@ contract Helper is PropertyFactory {
 	}
 
 	modifier enoughEtherToBuyProperty(uint _propertyId) {
-		// get msg.sender balance
-		uint balance = msg.sender.balance;
-		require(balance >= properties[_propertyId].price, "Your balance is too low to buy this property");
 		require(msg.value >= properties[_propertyId].price, "Your value is lower than property price");
 		_;
 	}
